@@ -7,11 +7,15 @@
     <title>Responsive Navbar</title>
     <link rel="stylesheet" href="styles.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
     <style>
         @font-face {
             font-family: 'Causten';
 
-            src: rl('/elements-causten-font-family-YHFRJUN-2020-12-19/Causten-Medium.otf'),
+            src: url('/elements-causten-font-family-YHFRJUN-2020-12-19/Causten-Medium.otf'),
 
 
                 url('/elements-causten-font-family-YHFRJUN-2020-12-19/Causten-Regular.otf'),
@@ -19,67 +23,71 @@
 
         }
 
-        body {
-            color: #000000;
-            background-color: #fff;
-            overflow-x: hidden;
-        }
-
-        body,
-        ul {
-            margin: 0;
+        * {
             padding: 0;
-            font-family: 'Causten', sans-serif;
-        }
+            margin: 0;
+            box-sizing: border-box;
 
-        a {
             text-decoration: none;
+            list-style: none;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
+        :root {
+            --bg-color: #79C701;
+            --text-color: #fff;
+            --main-color: #FBFFF6;
+            --link-color: #000033;
+            --black-color: #000000;
+        }
+
+        body {
+
+            background-color: var(--black-color);
+
             font-family: 'Causten', sans-serif;
-            /* Apply the custom font to headings */
         }
 
-        .main-section {
-            position: relative;
-            background-color: #FBFFF6;
-            padding-top: 20px;
-            height: 710px;
-            padding-bottom: 20px;
+
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            display: flex;
+            height: 80px;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--main-color);
+            padding: 28px 8%;
+            z-index: 1000;
+
         }
 
+        .logo img {
+            width: 200px;
+
+        }
 
         .navbar {
-            background-color: transparent;
-            padding: 15px 0;
-        }
-
-        .container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-
-
-        .navbar-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
         }
 
-        .navbar-links a::after {
+        .navbar a {
+            color: var(--link-color);
+
+            position: relative;
+            padding: 5px 0;
+            margin: 0px 30px;
+            font-size: 16px;
+            font-family: 'Causten', sans-serif;
+            font-weight: normal;
+
+        }
+
+
+        .navbar a::after {
             content: "";
             height: 3px;
             width: 0%;
@@ -90,30 +98,36 @@
             transition: 0.5s;
         }
 
-        .navbar-links a:hover::after {
+        .navbar a:hover::after {
             width: 100%;
 
         }
 
-        .navbar-links a {
-            color: black;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-            font-family: 'Causten', sans-serif;
-            font-weight: normal;
-            position: relative;
-        }
 
-        .auth-buttons {
+
+        /* .navbar a.active {
+            color: var(--main-color);
+        } */
+
+        .main {
             display: flex;
             align-items: center;
 
         }
 
-        .auth-buttons.mobile {
-            margin-left: -20px;
-            margin-top: 50px;
+        .main.main2 {
+            position: relative;
+            left: -10px;
+            top: 40px;
+
+        }
+
+        .main a {
+            margin-right: 25px;
+            margin-left: 10px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .signup-btn,
@@ -121,7 +135,7 @@
             color: #FFF;
             text-decoration: none;
             margin-left: 20px;
-            width: 89px;
+            width: 92px;
             height: 39px;
             font-size: 16px;
             font-weight: 400;
@@ -138,79 +152,125 @@
         .login-btn {
             border: 1px solid #105F3E;
             background-color: transparent;
+            color: #0F5F3E;
+        }
+
+        #menu-icon {
+            font-size: 35px;
             color: #105F3E;
-        }
-
-        .menu-toggle button {
-
-            position: relative;
-            left: 22rem;
-            top: -2.5rem;
-            background: none;
-            border: none;
-            color: black;
-            font-size: 18px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .menu-toggle svg {
-            width: 24px;
-            height: 24px;
-            fill: black;
-            /* Change the color as needed */
-            transition: fill 0.3s ease;
-            /* Smooth color transition */
-        }
-
-        .menu-toggle.active svg {
-            fill: #79C701;
-            /* Change color on click/active state */
-        }
-
-
-        .menu-toggle {
+            z-index: 1000;
             display: none;
         }
 
-        .content-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
+
+
+
+
+        @media (max-width: 1280px) {
+            header {
+                padding: 14px 2%;
+                transition: .2s;
+            }
+
+            .navbar a {
+                padding: 5px 0;
+                margin: 0px 20px;
+            }
+        }
+
+        @media (max-width: 1090px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 270px;
+                height: 30vh;
+                background: #105F3E;
+                display: flex;
+
+                flex-direction: column;
+                justify-content: flex-start;
+                border-radius: 10px;
+
+            }
+
+            .navbar a {
+                display: block;
+                margin: 0px 0;
+                padding: 0px 25px;
+                color: #fff;
+
+            }
+
+            .navbar a::after {
+                display: none;
+            }
+
+            .navbar a:hover::after {
+                width: 100%;
+
+            }
+
+            /* .navbar a:hover {
+                color: var(--text-color);
+            }
+
+            .navbar a.active {
+                color: var(--text-color);
+            } */
+
+            .navbar.open {
+                right: 2%;
+            }
 
         }
 
-        .row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
+        /* home section */
 
-        .content,
-        .image {
+        #home {
+            padding-top: 80px;
 
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .content {
-            position: relative;
-            top: 4rem;
-        }
-
-
-        .image {
-            position: relative;
-            top: -48px;
-        }
-
-        .image img {
-            width: 700px;
+            background-color: #FBFFF6;
             height: 680px;
+
+
         }
 
-        .content h2 {
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0px auto;
+            align-items: center;
+
+
+        }
+
+        div.featured {
+            grid-column: span 1;
+
+            gap: 60px;
+            align-items: center;
+
+
+        }
+
+
+        div.featured .img {
+
+            width: 710px;
+            height: 600px;
+
+        }
+
+
+        div.featured h2 {
             width: 508px;
             color: #000000;
             font-size: 48px;
@@ -218,11 +278,11 @@
             font-weight: 700;
         }
 
-        .content p {
+        div.featured p {
             width: 400px;
             color: #000000;
             font-size: 16px;
-            margin-top: -20px;
+            padding: 20px 0px;
             line-height: 25px;
             font-weight: 400;
         }
@@ -230,7 +290,7 @@
         .auth-img {
             display: flex;
             gap: 10px;
-            margin-top: 60px;
+            margin-top: 7rem;
         }
 
         .span {
@@ -239,115 +299,178 @@
             padding-top: 8px;
         }
 
-        /* frame section */
 
-        .frame-section {
-            width: 100%;
-            height: 180px;
-            padding: 10px 0;
-            background-color: #000000;
-        }
+        /* article p,
+        .article h3 {
+            margin: 20px 10px;
+        } */
 
+        /* responsive */
+        @media screen and (max-width: 980px) {
 
+            #home {
+                padding-top: 80px;
 
-        .custom-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .row-frame {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            /* Gap between columns */
-        }
-
-        .column {
-
-            color: #fff
-        }
-
-        .column h2 {
-            text-align: center;
-            font-size: 40px;
-            font-weight: 700;
-            color: #BEF200;
-
-        }
-
-        .column p {
-
-            font-size: 16px;
-            font-weight: 400;
-            color: #BEF200;
-            text-align: center;
-            max-width: 250px;
-            position: relative;
-            text-transform: capitalize;
-            left: 80px;
-            bottom: 20px;
-            margin-top: -10px;
-
-        }
-
-
-
-        /* @media screen and (max-width: 500px) {
-            .row-frame {
-                grid-template-columns: 1fr;
-            
-            }
-
-            .row {
-
-                grid-template-columns: 1fr;
+                background-color: #FBFFF6;
+                height: 880px;
 
             }
-            .main-section {
-            
-            height: 1400px;
-          
+
+            div.featured {
+                grid-column: span 2;
+
+            }
+
+            div.featured .img {
+
+                width: 510px;
+                height: 300px;
+
+
+            }
+
+            div.featured h2 {
+                width: 308px;
+                font-size: 28px;
+                margin: 0px 40px;
+                line-height: 40px;
+
+            }
+
+            div.featured p {
+                width: 300px;
+                padding: 10px 0px;
+
+                margin: 0px 40px;
+
+
+            }
+
+            .auth-img {
+                display: flex;
+                gap: 10px;
+                margin-top: 3rem;
+                margin-left: 30px;
+
+            }
+
+            .main.main2 {
+
+                top: 20px;
+                left: 20px;
+            }
+
+            .span {
+                font-size: 14px;
+                color: #000000;
+                padding-top: 8px;
+                margin-left: 30px;
+            }
         }
+
+        /* @media screen and (max-width: 760px) {
+
+            article,
+            article.featured {
+                display: block;
+                margin: 0 20px;
+            }
         } */
 
 
 
+        /* hero section */
+
+        .hero {
+            background-color: var(--black-color);
+            color: var(--bg-color);
+        }
+
+
+
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0px auto;
+            padding: 50px 0px;
+
+        }
+
+
+        article {
+            grid-column: span 1;
+        }
+
+
+
+
+        article h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        article p {
+            padding-top: 10px;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+
+        @media screen and (max-width: 980px) {
+            article {
+                grid-column: span 3;
+
+            }
+
+
+        }
+
+
         /* about section */
-        .about-section {
+        #about {
             background-color: #FBFFF6;
-            padding-top: 20px;
-
-            height: 700px;
-            padding-bottom: 20px;
-
+            color: var(--black-color);
+            padding: 40px 0px;
         }
 
-        .about-content {
-            position: relative;
-            top: 6rem;
-        }
+
+
 
         .line-div {
 
             display: flex;
             gap: 10px;
-            position: relative;
-            top: 30px;
             align-items: center;
         }
 
+        .line {
+            width: 30px;
+            height: 1.5px;
+            background-color: #BEF200;
+        }
+
+        .about-content {
+            margin-top: 7rem;
+        }
 
         .about-content h4 {
             font-size: 16px;
+
             color: #000000;
             text-transform: uppercase;
             font-weight: 600;
         }
 
         .about-content h2 {
-            width: 317px;
+
             color: #000000;
+            padding: 10px 0px;
             font-size: 36px;
             line-height: 43px;
             font-weight: 700;
@@ -363,24 +486,177 @@
             text-align: justify;
         }
 
-        .line {
-            width: 30px;
-            height: 1.5px;
-            background-color: #BEF200;
+
+        /* services section */
+
+        #services {
+            background-color: #FFF;
+            color: var(--black-color);
+            padding: 40px 0px;
         }
 
-        .img-about {
-            position: relative;
-            left: 5rem;
+
+
+        .services-content h6 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+            padding: 10px 0px;
+            text-align: center;
+
         }
 
-        /* about content end */
+        .services-content h2 {
+            text-align: center;
+            padding-bottom: 20px;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 40px;
 
-        /* hero section */
+
+
+        }
+
+        .grid-box {
+
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+
+            grid-template-columns: repeat(6, 1fr);
+            /* grid-template-rows: 100px 100px 200px; */
+            grid-gap: 10px;
+
+        }
+
+        .grid-box>div {
+
+            text-align: center;
+            padding: 30px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+
+
+        .grid-box>div:nth-child(1) {
+            grid-column: 1 / span 2;
+        }
+
+        .grid-box>div:nth-child(2) {
+            grid-column: span 2;
+        }
+
+        .grid-box>div:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        .grid-box>div:nth-child(4) {
+            grid-column: span 2;
+            align-self: end;
+        }
+
+        .grid-box>div:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        .grid-box>div:nth-child(6) {
+            grid-column: span 2;
+
+        }
+
+        .grid-box>div p.text {
+            font-size: 13px;
+            color: #000033F2;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .grid-box>div p.text2 {
+            color: #000033F2;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 300;
+            padding: 20px 0px;
+        }
+
+
+        @media screen and (max-width: 980px) {
+            .grid-box>div:nth-child(1) {
+                grid-column: 1 / span 3;
+            }
+
+            .grid-box>div:nth-child(2) {
+                grid-column: span 3;
+            }
+
+            .grid-box>div:nth-child(3) {
+                grid-column: span 3;
+            }
+
+            .grid-box>div:nth-child(4) {
+                grid-column: span 3;
+                align-self: end;
+            }
+
+            .grid-box>div:nth-child(5) {
+                grid-column: span 3;
+            }
+
+            .grid-box>div:nth-child(6) {
+                grid-column: span 3;
+
+            }
+
+            .grid-box>div img {
+                width: 100px;
+            }
+
+
+        }
+
+        @media screen and (max-width: 620px) {
+            .grid-box>div:nth-child(1) {
+                grid-column: 1 / span 6;
+            }
+
+            .grid-box>div:nth-child(2) {
+                grid-column: span 6;
+            }
+
+            .grid-box>div:nth-child(3) {
+                grid-column: span 6;
+            }
+
+            .grid-box>div:nth-child(4) {
+                grid-column: span 6;
+                align-self: end;
+            }
+
+            .grid-box>div:nth-child(5) {
+                grid-column: span 6;
+            }
+
+            .grid-box>div:nth-child(6) {
+                grid-column: span 6;
+
+            }
+
+            .grid-box>div img {
+                width: 100px;
+            }
+        }
+
+
+
+        /* hero-section */
+
         .hero-section {
             background-color: #CDE70C;
             width: 100%;
-            height: 350px;
+            margin: 0 auto;
+
         }
 
         .hero-content {
@@ -392,177 +668,116 @@
         .hero-content h2 {
             font-weight: 700;
             font-size: 48px;
+            padding: 20px 0px;
             line-height: 40px;
             color: #000000;
         }
 
         .hero-content p {
             font-size: 16px;
-            font-weight: 400;
-            color: #000000;
-            line-height: 27px;
-        }
-
-        .auth-img.hero {
-            margin-top: 10px;
-            position: relative;
-            left: 10rem;
-        }
-
-        /* why choose us */
-
-        .why-choose-us-section {
-            width: 100%;
-
-            padding: 10px 0;
-            background-color: #fff;
-        }
-
-        .column.box {
-            margin: 30px 0px;
-            width: 400px;
-            padding: 30px 0px;
-            height: 350px;
-            border-radius: 8px;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
-
-
-        .column.box h2 {
-            font-size: 14px;
-            color: #000033F2;
-            font-weight: 700;
-            line-height: 15px;
-        }
-
-        .column.box p {
-            color: #000033F2;
-            font-size: 13px;
-            font-weight: 300;
-            position: relative;
-            top: 20px;
-            bottom: 40px;
-            width: 300px;
-            line-height: 26px;
-        }
-
-        .data2 {}
-
-        /* services section */
-
-        .services-section {
-            width: 100%;
-
-            padding: 10px 0;
-            background-color: #fff;
-        }
-
-        .services-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .services-content h6 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #000000;
-            text-align: center;
-            position: relative;
-            top: 30px;
-        }
-
-        .services-content h2 {
-            text-align: center;
-            max-width: 540px;
-            font-weight: 700;
-            font-size: 30px;
-            line-height: 40px;
-            margin: 0px auto;
-
-
-        }
-
-        p.text {
-            font-size: 13px;
-            color: #000033F2;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        p.text.data2 {
-            margin-top: -30px;
-        }
-
-        p.text2 {
-            color: #000033F2;
-            font-size: 13px;
-            font-weight: 300;
             padding: 20px 0px;
-        }
-
-        /* data section */
-        .data-section {
-            background-color: #F7FFF6;
-            width: 100%;
-
-            padding: 10px 0;
-        }
-
-        .row-data {
-            display: grid;
-            margin: 40px 0px;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            /* Gap between columns */
-        }
-
-        .col {
-            width: 270px;
-            padding: 20px 10px;
-            height: 600px;
-            border-radius: 20px;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-            background-color: #fff;
-        }
-
-        .col.airtel {
-            height: 550px;
-        }
-
-        .col.glo {
-            height: 630px;
-        }
-
-        .col.etisale {
-            height: 580px;
-        }
-
-        .col img {
-            position: relative;
-            left: 6rem;
-        }
-
-        .col p {
-            color: #000033F2;
-            font-size: 13px;
             font-weight: 400;
-            text-align: center;
+            color: #000000;
+            line-height: 23px;
         }
 
-        .col p.p {
+
+
+        /* pricing */
+
+
+
+        #pricing {
+            background-color: #F7FFF6;
+            color: var(--black-color);
+            padding: 40px 0px;
+        }
+
+
+
+        .pricing-content h6 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+            padding: 10px 0px;
+            text-align: center;
+
+        }
+
+        .pricing-content h2 {
+            text-align: center;
+            padding-bottom: 20px;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 40px;
+
+
+
+        }
+
+        .grid-pricing {
+
+            max-width: 1000px;
+            margin: 20px auto;
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+            /* grid-template-rows: 100px 100px 200px; */
+            grid-gap: 30px;
+
+        }
+
+        .grid-pricing>div {
+
+            text-align: center;
+            padding: 30px 40px;
+            border: none;
+            /* margin: 0px 50px; */
+            border-radius: 8px;
+            background-color: #FFF;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        }
+
+
+
+        .grid-pricing>div:nth-child(1) {
+            grid-column: 1 / span 1;
+        }
+
+        .grid-pricing>div:nth-child(2) {
+            grid-column: span 1;
+        }
+
+        .grid-pricing>div:nth-child(3) {
+            grid-column: span 1;
+        }
+
+        .grid-pricing>div:nth-child(4) {
+            grid-column: span 1;
+            align-self: end;
+        }
+
+
+
+        .grid-pricing>div p.text {
+            font-size: 13px;
             color: #000033F2;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: 300;
-            line-height: 26px;
-            position: relative;
-            left: 45px;
-            top: 40px;
-            width: 180px;
+            font-weight: 700;
+            padding: 20px 0px;
             text-align: center;
         }
 
-        .col .btn {
+        .grid-pricing>div p.text2 {
+            color: #000033F2;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 300;
+            padding: 100px 0px;
+        }
+
+
+
+        .grid-pricing>div button.btn {
             width: 100px;
             height: 39px;
             background-color: #0F5F3E;
@@ -571,241 +786,198 @@
             font-size: 16px;
             font-weight: 400;
             border: none;
-            position: relative;
-            top: 20rem;
-            left: 5.5rem;
+
             cursor: pointer;
             transition: ease-in 0.7s;
         }
 
-        .col .btn:hover {
+        .grid-pricing>div button.btn:hover {
             background-color: #08a362;
         }
 
-        .col .btn2 {
-            top: 18rem;
+
+
+
+        @media screen and (max-width: 980px) {
+
+            .grid-pricing>div:nth-child(1) {
+                grid-column: 1 / span 2;
+            }
+
+            .grid-pricing>div:nth-child(2) {
+                grid-column: span 2;
+            }
+
+            .grid-pricing>div:nth-child(3) {
+                grid-column: span 2;
+            }
+
+            .grid-pricing>div:nth-child(4) {
+                grid-column: span 2;
+                align-self: end;
+            }
         }
 
-        .col .btn3 {
-            top: 22rem;
+        @media screen and (max-width: 620px) {
+
+            .grid-pricing>div:nth-child(1) {
+                grid-column: 1 / span 4;
+            }
+
+            .grid-pricing>div:nth-child(2) {
+                grid-column: span 4;
+            }
+
+            .grid-pricing>div:nth-child(3) {
+                grid-column: span 4;
+            }
+
+            .grid-pricing>div:nth-child(4) {
+                grid-column: span 4;
+                align-self: end;
+            }
         }
 
+        /* why-us */
 
-        /* FAQ section */
-        .faq-section {
+        #why-us {
             background-color: #FFF;
-            width: 100%;
-            height: 500px;
-            padding: 20px 0;
-        }
-
-        .faq-content {
-            width: 60%;
-            height: 400px;
-
-            margin: 30px auto;
-
-        }
-
-        /* Styles for the accordion */
-        .accordion {
-            border-radius: 8px;
-            border: none;
-
-        }
-
-        .accordion-item {
-            border: none;
-        }
-
-        .accordion-title.active {
-            margin: 20px 0px;
-            padding: 10px;
-            font-size: 16px;
-            color: #000000;
-            line-height: 25px;
-            border: none;
-            border-radius: 8px;
-            padding-left: 30px;
-            background-color: #CDE70C;
-            cursor: pointer;
-        }
-
-        .accordion-title {
-            margin: 20px 0px;
-            padding: 10px;
-            font-size: 16px;
-            color: #000000;
-            line-height: 25px;
-            border: 1px solid #000000;
-            border-radius: 8px;
-            padding-left: 30px;
-
-            cursor: pointer;
-        }
-
-        .accordion-content {
-            padding: 10px;
-            display: none;
-            font-size: 14px;
-            line-height: 20px;
-            /* Initially hide content */
-        }
-
-        /* Style for active (open) accordion item */
-        .accordion-item.active .accordion-content {
-            display: block;
-            /* Show content when active */
+            color: var(--black-color);
+            padding: 40px 0px;
         }
 
 
 
-        /* image-section */
-
-        .image-section {
-            background-color: #F7FFF6;
-            width: 100%;
-
-            padding: 10px 0;
-        }
-
-        .img-content {
-            background-color: #fff;
-            width: 60%;
-            height: 400px;
-
-            margin: 30px auto;
-            display: flex;
-            gap: 20px;
-
-        }
-
-        .img-group {
-            display: flex;
-            gap: 10px;
-            flex-direction: column;
-            position: relative;
-            top: 60px;
-        }
-
-        /* footer */
-        .footer {
-            background-color: #12141D;
-            width: 100%;
-
-            padding: 10px 0;
-            height: 440px;
-        }
 
 
-        .footer-content {
-            padding: 20px 70px;
-            display: flex;
-            gap: 30px;
-
-        }
-
-        .foot-col {
-            flex-basis: 40%;
-        }
-
-        .foot-col h2 {
-            font-size: 40px;
-            line-height: 48px;
+        .whyus-content h2 {
+            text-align: center;
+            padding-bottom: 20px;
             font-weight: 700;
-            color: #FFFFFF;
+            font-size: 25px;
+            line-height: 40px;
+
+
+
         }
 
-        .foot-col p {
-            font-size: 16px;
-            font-weight: 400;
-            color: #FFFFFF;
+        .grid-whyus {
+
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+            /* grid-template-rows: 100px 100px 200px; */
+            grid-gap: 30px;
+
         }
 
-        .foot-col.button {
-            display: flex;
-            justify-content: end;
+        .grid-whyus>div {
+
+            text-align: center;
+            padding: 30px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+
+
+        .grid-whyus>div:nth-child(1) {
+            grid-column: 1 / span 1;
+        }
+
+        .grid-whyus>div:nth-child(2) {
+            grid-column: span 1;
+        }
+
+        .grid-whyus>div:nth-child(3) {
+            grid-column: span 1;
+        }
+
+
+
+
+
+        .grid-whyus>div p.text {
+            font-size: 13px;
+            color: #000033F2;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .grid-whyus>div p.text2 {
+            color: #000033F2;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 300;
+            padding: 20px 0px;
+        }
+
+
+        @media screen and (max-width: 980px) {
+            .grid-whyus>div:nth-child(1) {
+                grid-column: 1 / span 3;
+            }
+
+            .grid-whyus>div:nth-child(2) {
+                grid-column: span 3;
+            }
+
+            .grid-whyus>div:nth-child(3) {
+                grid-column: span 3;
+            }
+
+
+        }
+
+
+
+
+
+
+        /* testimonial */
+        #testimonial {
+            background-color: #2C3032;
+            color: var(--black-color);
+            padding-top: 40px;
+        }
+
+
+        .grid-testimonial {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0px auto;
             align-items: center;
         }
 
-        .foot-btn {
-            width: 97px;
-            height: 39px;
-            border-radius: 2px;
-            background-color: #CDE70C;
-            color: #012112;
-            border: none;
-            font-size: 16px;
-            font-weight: 400;
-        }
-
-        p.para {
-            width: 280px;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 24px;
-            color: #FFFFFF;
-            text-align: justify;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-
-        .footer-content ul {
-            list-style: none;
-            display: block;
-            padding-top: 10px;
-
-
-        }
-
-        .footer-content ul li {
-            padding: 10px 30px;
-
-        }
-
-        .footer-content ul li a {
-            color: #FFFFFF;
-            font-size: 15px;
-            font-weight: 400
-        }
-
-        .footer-end-section {
-            background-color: #0B0D16;
-            width: 100%;
-
-            padding: 10px 0;
-            height: 50px;
-        }
-
-        .footer-end-section p {
-            color: #FFF;
-            font-size: 16px;
-
-            text-align: center;
-        }
-
-        /* market section */
-        .market-section {
-            background-color: #2C3032;
-
-            width: 100%;
-
-            padding: 20px 0;
-            height: 450px;
-
-        }
-
-        .row-market {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        div.test-content {
+            grid-column: span 1;
+            padding: 0px 50px;
             gap: 20px;
+            align-items: center;
+
+
         }
 
-        .columm {
-            padding: 10px 50px;
+
+
+        div.test-content p.colum {
+
+            color: #FFFFFF;
+            font-size: 40px;
+
+            font-weight: 700;
+
         }
 
-        .columm h3 {
+
+        div.test-content h3 {
+
             color: #FFFFFF;
             width: 530px;
             font-size: 28px;
@@ -813,11 +985,17 @@
 
         }
 
-        .columm p {
+        div.test-content p.text3 {
+
             color: #FFFFFF;
             font-size: 16px;
             line-height: 25px;
+
         }
+
+
+
+
 
         /* Slider container */
         .slider {
@@ -873,786 +1051,638 @@
             right: 0;
         }
 
+        @media screen and (max-width: 980px) {
 
-
-        @media screen and (max-width: 450px) {
-
-            body {
-                background-color: red;
+            div.test-content {
+                grid-column: span 2;
             }
+        }
 
-            .container {
-                flex-direction: column;
-                align-items: flex-start;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 0px;
-            }
-
-            .navbar-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                margin: 10px auto;
-
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .menu-toggle button {
-                background: none;
-                border: none;
-                color: black;
-                font-size: 18px;
-                cursor: pointer;
-            }
-
-            .navbar-links.active {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-            }
-
-            .navbar-links.active a {
-                margin: 10px 0;
-
-            }
-
-            .logo img {
-                width: 200px;
-                margin-left: 30px;
-            }
-
-            .container.content-section {
-                padding: 10px;
-                /* Adjust padding for smaller screens */
-            }
-
-            .auth-buttons.mobile {
-                display: flex;
-                /* Display auth buttons on mobile when active */
-                flex-direction: row;
-                /* Align buttons vertically */
-                align-items: center;
-                margin: 20px;
-                /* Adjust margin as needed */
-            }
-
-            .signup-btn,
-            .login-btn {
-                margin: 10px 0;
-                /* Add margin between buttons */
-                width: auto;
-                /* Reset width */
-            }
-
+        /* faq section */
+        #faq-section {
+            background-color: #fff;
+            color: var(--black-color);
+            padding: 40px 0px;
 
         }
 
-        /* @media screen and (min-width: 768px ) {
-
-            .container {
-                flex-direction: column;
-                align-items: flex-start;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 0px;
-            }
-
-            .navbar-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                margin: 10px auto;
-
-            }
-            .logo img{
-                margin-left: 30px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .menu-toggle button {
-                background: none;
-                border: none;
-                color: black;
-                font-size: 18px;
-                cursor: pointer;
-                left: 40rem;
-
-            }
-
-            .navbar-links.active {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-            }
-
-            .navbar-links.active a {
-                margin: 10px 0;
-
-            }
-
-
-
-            .container.content-section {
-                padding: 10px;
-
-            }
-
-            .auth-buttons.mobile {
-                display: flex;
-
-                flex-direction: row;
-
-                align-items: center;
-                margin: 20px;
-
-            }
-
-            .signup-btn,
-            .login-btn {
-                margin: 10px 0;
-
-                width: auto;
-                background-color: red;
-
-            }
-
-
-        } */
-
-
-        /* Update column styles for responsiveness */
-        @media screen and (max-width:450px) {
-            .row-frame {
-                grid-template-columns: 1fr;
-                /* On smaller screens, one column */
-            }
-
-            .row {
-                grid-template-columns: 1fr;
-
-            }
-
-            .main-section {
-                width: 100%;
-                height: 1145px;
-
-            }
-
-            .image img {
-                width: 400px;
-                height: 480px;
-            }
-
-            .content {
-                position: relative;
-                top: 0rem;
-            }
-
-            .content h2 {
-                width: 408px;
-                padding-left: 20px;
-                font-size: 38px;
-
-
-            }
-
-            .content p {
-                padding-left: 20px;
-            }
-
-            .auth-img {
-                margin-left: 20px;
-
-            }
-
-            .auth-buttons {
-                display: none;
-
-
-            }
-
-            .auth-buttons a {
-                margin-left: 10px;
-                margin-right: 10px;
-
-            }
-
-            .auth-buttons.mobile {
-                margin: 0px auto;
-            }
-
-            .span {
-                padding-left: 20px;
-            }
-
-            .frame-section {
-                height: 540px;
-            }
-
-            .column p {
-                left: 4rem;
-            }
-
-            .about-section {
-                height: 850px;
-
-            }
-
-            .about-content {
-                position: relative;
-                top: 0rem;
-            }
-
-            .about-content h2 {
-                width: 290px;
-                padding-left: 20px;
-                font-size: 30px;
-
-            }
-
-            .about-content h4 {
-                font-size: 14px;
-
-            }
-
-            .about-content p {
-                padding-left: 20px;
-                font-size: 15px;
-                width: 326px;
-            }
-
-            .line-div {
-                margin-left: 20px;
-            }
-
-            .line {
-                width: 20px;
-
-            }
-
-            .img-about {
-                position: relative;
-                left: -20px;
-            }
-
-
-            .services-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-
-
-            .services-content h2 {
-                font-size: 20px;
-            }
-
-
-            p.text.data2 {
-                margin-top: 0px;
-            }
-
-            .column.box {
-                height: 280px;
-                width: 350px;
-                margin: 30px auto;
-            }
-
-            .column.box .images {
-                width: 50px;
-            }
-
-            .column.box p {
-                left: 3rem;
-            }
-
-            .column.box img {
-                width: 100px;
-            }
-
-            .hero-section {
-
-                height: 400px;
-            }
-
-            .hero-content {
-
-                padding: 30px 0px;
-            }
-
-            .auth-img.hero {
-
-                left: 3rem;
-            }
-
-            .hero-content h2 {
-
-                font-size: 40px;
-
-            }
-
-
-            .why-choose-us-section {
-                padding: 10px 0;
-            }
-
-
-            .row-data {
-
-
-                grid-template-columns: 1fr;
-
-                /* Gap between columns */
-            }
-
-            .col {
-                width: 270px;
-                padding: 20px 0px;
-                height: 350px;
-                margin: 40px auto;
-            }
-
-            .col img {
-                position: relative;
-                left: 6rem;
-            }
-
-            .col .btn {
-                top: 6rem;
-            }
-
-            .col .btn2 {
-                top: 6rem;
-            }
-
-            .col .btn3 {
-                top: 6rem;
-            }
-
-            .col.airtel {
-                height: 350px;
-            }
-
-            .col.glo {
-                height: 350px;
-            }
-
-            .col.etisale {
-                height: 350px;
-            }
-
-
-            .img-content {
-                background-color: #fff;
-                width: 90%;
-                height: 300px;
-
-                margin: 30px 10px;
-                display: flex;
-                gap: 20px;
-
-            }
-
-            .img-content img {
-                width: 400px;
-            }
-
-            .img-group {
-                display: none;
-            }
-
-            .footer {
-                background-color: #12141D;
-                width: 100%;
-
-                padding: 10px 0;
-                height: 600px;
-            }
-
-            .footer-content {
-                display: block;
-            }
-
-            .foot-col {
-                flex-basis: 40%;
-            }
-
-            .foot-col h2 {
-                font-size: 24px;
-                line-height: 40px;
-            }
-
-
-
-
-
-            p.para {
-                width: 100%;
-
-            }
-
-            .footer-content ul li {
-                padding: 10px 0;
-
-            }
-
-            .market-section {
-
-                height: 720px;
-
-            }
-
-            .row-market {
-
-
-                grid-template-columns: 1fr;
-
-            }
-
-            .columm {
-                padding: 10px 20px;
-            }
-
-            .columm h3 {
-
-                width: 360px;
-                font-size: 18px;
-
-
-            }
+        .faq-content h6 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        .faq-content h2 {
+            text-align: center;
+
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 40px;
+        }
+
+        .accondion-container {
+            margin: 0px auto;
+            width: 700px;
 
         }
 
-        /* @media screen and (min-width: 768px) {
-            .row-frame {
-                grid-template-columns: 1fr;
-          
-            }
-
-            .row {
-                grid-template-columns: 1fr;
-
-            }
-
-            .main-section {
-
-                height: 1145px;
-
-            }
-
-            .image img {
-                width: 500px;
-                height: 480px;
-            }
-
-            .content {
-                position: relative;
-                top: 0rem;
-            }
-
-            .content h2 {
-                width: 408px;
-                padding-left: 20px;
-                font-size: 38px;
 
 
-            }
+        .accordion {
+            border-radius: 8px;
+            border: none;
 
-            .content p {
-                padding-left: 20px;
-            }
-
-            .auth-img {
-                margin-left: 20px;
-
-            }
-
-            .auth-buttons {
-                display: none;
-
-
-            }
-
-            .auth-buttons a {
-                margin-left: 0;
-                margin-right: 10px;
-
-            }
-
-            .auth-buttons.mobile {
-                margin: 0px auto;
-            }
-
-            .span {
-                padding-left: 20px;
-            }
-
-            .frame-section {
-                height: 540px;
-            }
-
-            .column p {
-                left: 13rem;
-            }
-
-            .about-section {
-                height: 850px;
-
-            }
-
-            .about-content {
-                position: relative;
-                top: 0rem;
-            }
-
-            .about-content h2 {
-                width: 290px;
-                padding-left: 20px;
-                font-size: 30px;
-
-            }
-
-            .about-content h4 {
-                font-size: 14px;
-
-            }
-
-            .about-content p {
-                padding-left: 20px;
-                font-size: 15px;
-
-            }
-
-            .line-div {
-                margin-left: 20px;
-            }
-
-            .line {
-                width: 20px;
-
-            }
-
-            .img-about {
-                position: relative;
-                left: 0rem;
-            }
-
-
-            .services-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-
-
-            .services-content h2 {
-                font-size: 20px;
-            }
-
-
-            p.text.data2 {
-                margin-top: 0px;
-            }
-
-            .column.box {
-                height: 280px;
-                width: 350px;
-                margin: 30px auto;
-            }
-
-            .column.box .images {
-                width: 50px;
-            }
-
-            .column.box p {
-                left: 3rem;
-            }
-
-            .column.box img {
-                width: 100px;
-            }
-
-            .hero-section {
-
-                height: 400px;
-            }
-
-            .hero-content {
-
-                padding: 30px 0px;
-            }
-
-            .auth-img.hero {
-
-                left: 6rem;
-            }
-
-            .hero-content h2 {
-
-                font-size: 40px;
-
-            }
-
-
-            .why-choose-us-section {
-                padding: 10px 0;
-            }
-
-
-            .row-data {
-
-
-                grid-template-columns: 1fr;
-
-               
         }
 
-        .col {
-            width: 270px;
-            padding: 20px 0px;
-            height: 350px;
-            margin: 40px auto;
+        .accordion-item {
+            border: none;
         }
 
-        .col img {
-            position: relative;
-            left: 6rem;
+        .accordion-title.active {
+            /* margin: 0px 0px; */
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #000000;
+            line-height: 25px;
+            border: none;
+            border-radius: 8px;
+            padding-left: 30px;
+            background-color: #CDE70C;
+            cursor: pointer;
         }
 
-        .col .btn {
-            top: 6rem;
+        .accordion-title {
+            /* margin: 20px 0px; */
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            color: #000000;
+            line-height: 25px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            padding-left: 30px;
+
+            cursor: pointer;
         }
 
-        .col .btn2 {
-            top: 6rem;
+        .accordion-content {
+            padding: 10px;
+            display: none;
+            font-size: 14px;
+            line-height: 20px;
+
         }
 
-        .col .btn3 {
-            top: 6rem;
+
+        .accordion-item.active .accordion-content {
+            display: block;
+
         }
 
-        .col.airtel {
-            height: 350px;
-        }
+        /* imge section */
 
-        .col.glo {
-            height: 350px;
-        }
+        .image-section {
+            background-color: #F7FFF6;
+            color: var(--black-color);
+            padding: 40px 0px;
 
-        .col.etisale {
-            height: 350px;
         }
 
         .img-content {
-            margin: 30px 60px;
+            background-color: #fff;
+            width: 60%;
+            margin: 0px auto;
+            padding: 40px 0px;
+
         }
 
-        .img-group {
-            display: none;
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            align-items: center;
         }
 
-        .footer {
+        .image-grid>div:nth-child(1) {
+            grid-column: span 1;
+        }
+
+        .image-grid>div:nth-child(2) {
+            grid-column: span 1;
+            /* grid-column: span 1;
+           
+            grid-template-rows: repeat(3, 1fr); */
+            display: grid;
+            gap: 20px;
+        }
+
+        @media screen and (max-width: 980px) {
+
+            .image-grid>div:nth-child(1) {
+                grid-column: span 2;
+
+            }
+
+            .image-grid>div:nth-child(1) .bg-image {
+                width: 70%;
+            }
+
+            .image-grid>div:nth-child(2) {
+                grid-column: span 2;
+                /* grid-column: span 1;
+           
+            grid-template-rows: repeat(3, 1fr); */
+                display: flex;
+
+
+            }
+
+            .img-content {
+                background-color: #fff;
+                width: 100%;
+                margin: 0px auto;
+                padding: 40px 0px;
+
+            }
+        }
+
+
+
+
+        /* footer */
+        #footer {
             background-color: #12141D;
-            width: 100%;
 
-            padding: 10px 0;
-            height: 500px;
+            color: var(--black-color);
+            padding: 40px 0px;
+
         }
+
 
         .footer-content {
-            display: block;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0px auto;
+
         }
 
+
+        .sub-content1 {
+            grid-column: span 1;
+            padding: 0px 50px;
+        }
+
+        .sub-content2 {
+            grid-column: span 1;
+            padding: 0px 50px;
+            justify-self: end;
+
+        }
+
+        .footer-content h2 {
+            font-size: 40px;
+            padding: 20px 0px;
+            line-height: 48px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .footer-content p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+
+        .footer-content button {
+            width: 97px;
+            height: 39px;
+            border-radius: 2px;
+            background-color: #CDE70C;
+            color: #012112;
+            border: none;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+
+        .hr {
+            width: 100%;
+            max-width: 1300px;
+            height: 1px;
+
+            margin: 50px auto;
+            background-color: #E0F1C5;
+        }
+
+
+
+        .foot-content {
+            display: flex;
+            padding: 30px 50px;
+            gap: 50px;
+            align-items: baseline;
+            max-width: 1200px;
+            margin: 0px auto;
+        }
+
+        .foot-content p.para {
+            width: 280px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #FFFFFF;
+            margin-top: -50px;
+            text-align: justify;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+
+
+        ul li {
+            padding: 10px 0px;
+
+        }
+
+        ul li a {
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 400
+        }
+
+        @media screen and (max-width: 980px) {
+
+            .sub-content1 {
+                grid-column: span 2;
+            }
+
+            .sub-content2 {
+                grid-column: span 2;
+
+                justify-self: center;
+
+            }
+
+            .foot-content {
+                display: block;
+
+
+            }
+
+            .footer-content h2 {
+                font-size: 30px;
+
+            }
+        }
+
+
+        /*
         .foot-col {
             flex-basis: 40%;
         }
 
         .foot-col h2 {
-            font-size: 24px;
-            line-height: 40px;
+            
         }
 
+        .foot-col p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
 
+        .foot-col.button {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
 
-
+        .foot-btn {
+            
+        }
 
         p.para {
+            width: 280px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #FFFFFF;
+            text-align: justify;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+
+      
+        .footer-end-section {
+            background-color: #0B0D16;
             width: 100%;
 
-        }
-
-        .footer-content ul li {
             padding: 10px 0;
+            height: 50px;
+        }
+
+        .footer-end-section p {
+            color: #FFF;
+            font-size: 16px;
+
+            text-align: center;
+        } */
+
+
+        /* 
+       
+
+        .img-group {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            position: relative;
+            top: 60px;
+        } */
+
+
+        /* 
+        @media screen and (max-width: 980px) {
+            .grid-box>div:nth-child(1) {
+                grid-column: 1 / span 3;
+            }
+
+            .grid-box>div:nth-child(2) {
+                grid-column: span 3;
+            }
+
+            .grid-box>div:nth-child(3) {
+                grid-column: span 3;
+            }
+
+            .grid-box>div:nth-child(4) {
+                grid-column: span 3;
+                align-self: end;
+            }
+
+            .grid-box>div:nth-child(5) {
+                grid-column: span 3;
+            }
+
+            .grid-box>div:nth-child(6) {
+                grid-column: span 3;
+
+            }
+
+            .grid-box>div img {
+                width: 100px;
+            }
+
 
         }
 
-        .market-section {
+        @media screen and (max-width: 620px) {
+            .grid-box>div:nth-child(1) {
+                grid-column: 1 / span 6;
+            }
 
-            height: 890px;
+            .grid-box>div:nth-child(2) {
+                grid-column: span 6;
+            }
 
-        }
+            .grid-box>div:nth-child(3) {
+                grid-column: span 6;
+            }
 
-        .row-market {
+            .grid-box>div:nth-child(4) {
+                grid-column: span 6;
+                align-self: end;
+            }
 
+            .grid-box>div:nth-child(5) {
+                grid-column: span 6;
+            }
 
+            .grid-box>div:nth-child(6) {
+                grid-column: span 6;
+
+            }
+
+            .grid-box>div img {
+                width: 100px;
+            }
+        } */
+
+        /* .auth-img.hero {
+            margin-top: 10px;
+            position: relative;
+            left: 10rem;
+        }  */
+
+        /* .grid-container {
             grid-template-columns: 1fr;
 
         }
 
+
+
+        .grid-container>div {
+
+
+            padding: 20px;
+
+
+        }
+
+        .grid-container>div:nth-child(1) {
+            padding-top: 5rem;
+        }
+
+        #home {
+            background-color: var(--main-color);
+            height: 1010px;
+            width: 100%;
+
+        }
+
+        #section2 {
+            background-color: var(--black-color);
+            height: 500px;
+            width: 100%;
+            padding: 30px 0px;
+        }
+
+        .grid {
+            grid-template-columns: 1fr;
+
+
+
+        }
+
+
+
+        .grid>div {
+
+            text-align: center;
+            padding: 20px;
+
+        }
+
+        .grid-container>div h2 {
+            width: 508px;
+            color: #000000;
+            font-size: 48px;
+            line-height: 57px;
+            font-weight: 700;
+            font-family: 'Causten', sans-serif;
+        }
+
+        .grid-container>div p {
+            width: 417px;
+            color: #000000;
+            font-size: 16px;
+            padding: 20px 0px;
+            line-height: 25px;
+            font-weight: 400;
+            font-family: 'Causten', sans-serif;
+        }
+
+        .main.hero {
+            left: -20px;
+            position: relative;
+            top: 30px;
+        }
+
+        .auth-img {
+            display: flex;
+            gap: 10px;
+            margin-top: 5rem;
+        }
+
+        .span {
+            font-size: 14px;
+            color: #000000;
+            padding-top: 8px;
+        }
+
+
+        .img {
+            width: 100%;
+           
+            position: relative;
+            top: 0rem;
+        }
+
+
+        .grid>div h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #BEF200;
+
+
+        }
+
+        .grid>div p {
+
+            font-size: 14px;
+            font-weight: 400;
+            color: #BEF200;
+            text-align: center;
+            line-height: 20px;
+            padding-top: 20px;
+            text-transform: capitalize;
+
+
+        } */
+
+        /* @media screen and (min-width: 1080px) {
+
+
+            #home {
+                background-color: var(--main-color);
+                height: 710px;
+                width: 100%;
+
+            }
+
+            #section2 {
+                background-color: var(--black-color);
+                height: 200px;
+                width: 100%;
+                padding: 30px 0px;
+            }
+
+            .grid-container {
+
+                max-width: 1250px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+              
+                gap: 30px;
+
+            }
+
+            .grid {
+
+                max-width: 1250px;
+                margin: 0 auto;
+                display: grid;
+
+                grid-template-columns: repeat(3, 1fr);
+            
+                gap: 30px;
+
+            }
+
+            .img {
+                width: 700px;
+                height: 680px;
+                position: relative;
+                top: -5.6rem;
+            }
         } */
     </style>
 </head>
 
 <body>
-    <section class="main-section">
-        <div class="gradient-overlay"></div>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <a href="#"><img src="images/logo.png" alt="logo"></a>
-                </div>
-                <div class="menu-toggle">
-                    <button onclick="toggleMenu()">
-                        <!-- Menu Icon SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="navbar-links">
-                    <a href="#" class="nav-link">Home</a>
-                    <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">Contact</a>
-                    <a href="#" class="nav-link">Services</a>
-                </div>
-                <div class="auth-buttons">
-                    <a href="#" class="signup-btn">Sign Up</a>
-                    <a href="#" class="login-btn">Login</a>
-                </div>
 
-            </div>
-        </nav>
 
-        <div class="container content-section">
-            <div class="row">
-                <div class="content">
+    <header>
+        <div class="logo">
+            <a href="#"><img src="images/logo.png" alt="logo"></a>
+        </div>
+        <ul class="navbar">
+
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Develper</a></li>
+
+        </ul>
+
+        <div class="main">
+            <a href="#" class="signup-btn">SignUp </a>
+            <a href="#" class="login-btn" style="color: #0F5F3E;">Login </a>
+            <div id="menu-icon" class="bx bx-menu"></div>
+        </div>
+    </header>
+
+    <section id="home">
+        <main class="grid-container">
+            <div class="featured">
+
+                <div style="padding-top: 70px;">
                     <h2>your one-stop destination for cheap Airtime, Data and Cash.</h2>
                     <p>Welcome to your all in one hub for affordable Data, Airtime, Cash and Bill Payments. unbeatable
                         deals Guaranty.
                     </p>
 
-                    <div class="auth-buttons mobile">
+                    <div class="main main2">
                         <a href="#" class="signup-btn" style="width:148px; padding: 6px 0px;">Create Account</a>
-                        <a href="#" class="login-btn">Login</a>
+                        <a href="#" class="login-btn" style="color: #0F5F3E;">Login</a>
                     </div>
 
                     <div class="auth-img">
@@ -1667,46 +1697,65 @@
                     </div>
                     <span class="span">Available soon on Android and IOS</span>
                 </div>
-                <div class="image">
-                    <img src="images/image.svg" alt="Image Description">
-                </div>
-            </div>
-        </div>
 
+
+
+            </div>
+            <div class="featured">
+
+                <img src="images/image.svg" alt="Image Description" class="img">
+
+            </div>
+
+
+        </main>
     </section>
 
 
 
-    <section class="frame-section">
-        <div class="custom-container">
-            <div class="row-frame">
-                <div class="column">
+
+    <section class="hero">
+
+        <div class="grid">
+            <article>
+
+                <div>
                     <h2>5k+</h2>
                     <p>We attracts over 5,000 customers who choose our platform for their service needs
                         Monthly.</p>
                 </div>
-                <div class="column">
+            </article>
+            <article>
+
+                <div>
                     <h2>92%</h2>
                     <p>Satisfaction rate comes from our awesome customers.</p>
                 </div>
-                <div class="column">
+            </article>
+            <article>
+
+                <div>
                     <h2>500+</h2>
                     <p>Average Award we have got all over internet..</p>
                 </div>
-            </div>
+            </article>
         </div>
+
     </section>
 
-    <section class="about-section">
-        <div class="container content-section">
-            <div class="row">
+
+
+    <section id="about">
+        <main class="grid-container">
+            <div class="featured">
+
                 <div class="about-content">
                     <div class="line-div">
                         <div class="line"></div>
                         <h4>About netalinks</h4>
                     </div>
 
-                    <h2>We deliver exceptional services</h2>
+                    <h2>We deliver <br> exceptional services</h2>
                     <p>Netalinks is your go-to destination for affordable connectivity!
                         Our Services span across various categories including Data subscription, cable sub, electric
                         bill, Airtime top up with a discounted prices opportunities to resellers and Users alike.
@@ -1720,216 +1769,226 @@
 
 
                 </div>
-                <div class="image img-about">
-                    <img src="images/image2.svg" alt="Image Description" width="700px" height="650px">
-                </div>
+
+
             </div>
-        </div>
+            <div class="featured">
+                <img src="/images/images2.png" class="img2" alt="featured img">
+            </div>
+
+
+        </main>
     </section>
 
-    <section class="services-section">
+
+
+    <section id="services">
         <div class="services-content">
             <h6 class="">SERVICES</h6>
-            <h2 class="">Explore Various Services Available
+            <h2 class="">Explore Various Services Available <br>
                 For You
             </h2>
-            <div class="row-frame">
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center;"><img src="images/img2.png" alt="">
-                    </div>
-                    <p class="text">Cable Subscription</p>
+        </div>
+        <div class="grid-box">
+            <div>
+                <img src="images/img2.png" alt="">
+                <p class="text">Cable Subscription</p>
 
-                    <p class="text2">Instant Activation of Cable subscription with favourable discount in prices. .</p>
+                <p class="text2">Instant Activation of Cable subscription with <br> favourable discount in prices. .</p>
 
-                    <a href="" style="color: #000033; display: flex; justify-content: center; padding-top:30px ;">Learn
-                        More &#8594;</a>
-                </div>
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center; "><img src="images/img1.png" alt="">
-                    </div>
-                    <p class="text">Airtime Topup</p>
-
-                    <p class="text2">Making online recharge has become very easy and safe. also any time of the day.</p>
-                    <a href="" style="color: #000033; display: flex; justify-content: center;padding-top: 30px; ">Learn
-                        More &#8594;</a>
-                </div>
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center;position: relative;top: -10px; "><img
-                            src="images/img3.png" alt="">
-                    </div>
-                    <p class="text">Airtime Topup</p>
-
-                    <p class="text2">Start Enjoyin this very low rates utility bill payment for your electricity etc.
-                    </p>
-                    <a href="" style="color: #000033; display: flex; justify-content: center; padding-top:10px ;">Learn
-                        More &#8594;</a>
-                </div>
+                <a href="" style="color: #000033;">Learn
+                    More &#8594;</a>
             </div>
-            <div class="row-frame">
-                <div class="column box ">
-                    <div class="" style="display: flex; justify-content: center;"><img src="images/img6.png" alt="">
-                    </div>
-                    <p class="text data">Buy Data</p>
+            <div>
+                <img src="images/img1.png" alt="">
 
-                    <p class="text2">Data subscription made quick, cheap and easy to buy at any time of the day.</p>
+                <p class="text">Airtime Topup</p>
 
-                    <a href="" style="color: #000033; display: flex; justify-content: center; padding-top:30px ;">Learn
-                        More &#8594;</a>
-                </div>
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center; "><img src="images/img4.png" alt="">
-                    </div>
-                    <p class="text">Exam pins</p>
+                <p class="text2">Making online recharge has become very easy and <br> safe. also any time of the day.
+                </p>
+                <a href="" style="color: #000033;">Learn
+                    More &#8594;</a>
+            </div>
+            <div>
+                <img src="images/img3.png" alt="">
 
-                    <p class="text2">Start Enjoying this service at a very lower rate.</p>
-                    <a href="" style="color: #000033; display: flex; justify-content: center; padding-top: 20px;">Learn
-                        More &#8594;</a>
-                </div>
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center;position: relative;top: -10px; "><img
-                            src="images/img5.png" alt="">
-                    </div>
-                    <p class="text data2">API Documentation</p>
+                <p class="text">Airtime Topup</p>
 
-                    <p class="text2">We provide well documented easy to integrate API documentation, irrespective of the
-                        programming language you are using.
-                    </p>
-                    <a href="" style="color: #000033; display: flex; justify-content: center; padding-top:10px ;">Learn
-                        More &#8594;</a>
-                </div>
+                <p class="text2">Start Enjoyin this very low rates utility bill payment <br> for your electricity etc.
+                </p>
+                <a href="" style="color: #000033; ">Learn
+                    More &#8594;</a>
+            </div>
+            <div>
+                <img src="images/img6.png" alt="">
+
+                <p class="text data">Buy Data</p>
+
+                <p class="text2">Data subscription made quick, cheap and easy to <br> buy at any time of the day.</p>
+
+                <a href="" style="color: #000033; ">Learn
+                    More &#8594;</a>
+            </div>
+            <div>
+                <img src="images/img5.png" alt="">
+
+                <p class="text">Exam pins</p>
+
+                <p class="text2">Start Enjoying this service at a very lower rate.</p>
+                <a href="" style="color: #000033; ">Learn
+                    More &#8594;</a>
+            </div>
+            <div>
+                <img src="images/img4.png" alt="">
+
+                <p class="text data2">API Documentation</p>
+
+                <p class="text2">We provide well documented easy to integrate API <br> documentation, irrespective of
+                    the
+                    programming <br> language you are using.
+                </p>
+                <a href="" style="color: #000033; ">Learn
+                    More &#8594;</a>
             </div>
         </div>
     </section>
+
+
+
+
+
 
     <section class="hero-section">
-        <div class="container content-section">
-            <div class="hero-content">
-                <h2>Download Our Mobile App</h2>
-                <p>Discover our mobile app and get the best outcome of online banking and enjoy <br> your everyday
-                    transaction</p>
+        <div class="hero-content">
+
+            <h2>Download Our Mobile App</h2>
+            <p>Discover our mobile app and get the best outcome of online banking and enjoy <br> your everyday
+                transaction</p>
 
 
-                <div class="auth-img hero">
-                    <a href="#">
-                        <img src="images/image 55.png" alt="">
+            <div class="">
+                <a href="#">
+                    <img src="images/image 55.png" alt="">
 
-                    </a>
-                    <a href="#">
-                        <img src="images/image 56.png" alt="">
+                </a>
+                <a href="#" style="margin-left: 10px;">
+                    <img src="images/image 56.png" alt="">
 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="data-section">
-        <div class="">
-            <div class="services-content">
+                </a>
 
-                <h6 class="">PRICING TABLE</h6>
-                <h2 class="">Affordable Data Plan ANd Price
-                </h2>
-                <div class="row-data">
-                    <div class="col">
-                        <img src="images/img7.png" alt="">
-                        <p>MTN DATA</p>
-                        <p class="p">Instant Activation of Cable subscription with favourable discount in prices.</p>
-
-                        <button class="btn">Buy Now</button>
-
-                    </div>
-                    <div class="col airtel"> <img src="images/img8.png" alt="">
-                        <p>AIRTEL DATA</p>
-                        <p class="p">Instant Activation of Cable subscription with favourable discount in prices.</p>
-
-                        <button class="btn btn2">Buy Now</button>
-                    </div>
-                    <div class="col glo"> <img src="images/image 59.png" alt="">
-                        <p>GLO DATA</p>
-                        <p class="p">Instant Activation of Cable subscription with favourable discount in prices.</p>
-
-                        <button class="btn btn3">Buy Now</button>
-                    </div>
-                    <div class="col etisale"> <img src="images/image 60.png" alt="">
-                        <p>9MOBILE DATA</p>
-                        <p class="p">Instant Activation of Cable subscription with favourable discount in prices.</p>
-
-                        <button class="btn">Buy Now</button>
-                    </div>
-
-                </div>
             </div>
         </div>
     </section>
 
-    <section class="why-choose-us-section">
-        <div class="custom-container">
-            <h2 class="" style="text-align: center; font-size: 36px; color: #000000; font-weight: 700;">Why Choose Us
+
+
+    <section id="pricing">
+        <div class="pricing-content">
+            <h6 class="">PRICING TABLE</h6>
+            <h2 class="">Affordable Data Plan ANd Price
+
             </h2>
-            <div class="row-frame">
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center; padding:  20px 0px;"><img
-                            class="images" src="mages/image3.png" alt="">
-                    </div>
-                    <h2>We Automated</h2>
-                    <p>Our service delivery and wallet funding is automated, your purchase are automated and get
-                        delivered to you at a blink of an eye. .</p>
+        </div>
+        <div class="grid-pricing">
+            <div>
+                <img src="images/img7.png" alt="">
+                <p class="text">MTN DATA</p>
+                <p class="text2">Instant Activation of Cable subscription with favourable discount in prices.</p>
 
-
-                </div>
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center; padding:  20px 0px;"><img
-                            class="images" src="images/image3.png" alt="">
-                    </div>
-                    <h2>24/7 Customer Support</h2>
-                    <p>Our customers are premium to us, hence satisfying them is our top most priority. Our customer
-                        service is just a click away available 24/7. .</p>
-                </div>
-                <div class="column box">
-                    <div class="" style="display: flex; justify-content: center; padding:  20px 0px;"><img
-                            class="images" src="images/image3.png" alt="">
-                    </div>
-                    <h2>E-wallet</h2>
-                    <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with us. Your
-                        funds are secured with your e-wallet PIN and can be kept for you for as long as you want.</p>
-                </div>
+                <button class="btn">Buy Now</button>
             </div>
+            <div>
+                <img src="images/img8.png" alt="">
+                <p class="text">AIRTEL DATA</p>
+                <p class="text2">Instant Activation of Cable subscription with favourable discount in prices.</p>
+
+                <button class="btn btn2">Buy Now</button>
+            </div>
+            <div>
+                <img src="images/image 59.png" alt="">
+                <p class="text">GLO DATA</p>
+                <p class="text2">Instant Activation of Cable subscription with favourable discount in prices.</p>
+
+                <button class="btn btn3">Buy Now</button>
+            </div>
+            <div>
+                <img src="images/image 60.png" alt="">
+                <p class="text">9MOBILE DATA</p>
+                <p class="text2">Instant Activation of Cable subscription with favourable discount in prices.</p>
+
+                <button class="btn">Buy Now</button>
+            </div>
+
         </div>
     </section>
 
+    <section id="why-us">
+        <div class="whyus-content">
 
-    <section class="market-section">
-        <div class="row-market">
-            <div class="columm">
+            <h2 class="">Why Choose Us
+
+            </h2>
+        </div>
+        <div class="grid-whyus">
+            <div>
+                <img class="images" src="images/image3.png" alt="">
+
+                <p class="text">We Automated</p>
+                <p class="text2">Our service delivery and wallet funding is automated, your purchase are automated and
+                    get
+                    delivered to you at a blink of an eye. .</p>
+            </div>
+            <div>
+                <img class="images" src="images/image3.png" alt="">
+
+                <p class="text">24/7 Customer Support</p>
+                <p class="text2">Our customers are premium to us, hence satisfying them is our top most priority. Our
+                    customer
+                    service is just a click away available 24/7. .</p>
+            </div>
+            <div>
+                <img class="images" src="images/image3.png" alt="">
+
+                <p class="text">E-wallet</p>
+                <p class="text2">Your e-wallet is the safest, easiest and fastest means of carrying out transactions
+                    with us. Your
+                    funds are secured with your e-wallet PIN and can be kept for you for as long as you want.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="testimonial">
+        <main class="grid-testimonial">
+            <div class="test-content">
+
                 <div class="discription" id="content1">
-                    <p style="color: #fff; font-size: 40px; position: relative;top: 30px;">“ ”</p>
+                    <p class="colum">“ ”</p>
                     <h3>As a Marketing Specialist, staying connected is crucial, and Netalinks has made it incredibly
                         easy
                         without breaking the bank. Highly recommended!</h3>
-                    <p>Sarah Thompson <br> Marketing Specialist</p>
+                    <p class="text3">Sarah Thompson <br> Marketing Specialist</p>
                 </div>
 
-
                 <div class="discription" id="content2">
-                    <p style="color: #fff; font-size: 40px; position: relative;top: 30px;">“ ”</p>
+                    <p class="colum">“ ”</p>
                     <h3>The convenience of handling data, airtime, and bill payments in one platform is a lifesaver.
                         Plus, the Airtime to Cash feature is brilliant. Netalinks has become an indispensable tool for
                         my business.</h3>
-                    <p>Mr. Michael Arinze <br> Small Business Owner</p>
+                    <p class="text3">Mr. Michael Arinze <br> Small Business Owner</p>
                 </div>
 
                 <div class="discription" id="content3">
-                    <p style="color: #fff; font-size: 40px; position: relative;top: 30px;">“ ”</p>
+                    <p class="colum">“ ”</p>
                     <h3>Being a student, every penny counts. Netalinks has been a lifesaver for my budget. I can easily
                         manage my data and airtime needs without overspending.</h3>
-                    <p>Emily Adegoke <br> Student</p>
+                    <p class="text3">Emily Adegoke <br> Student</p>
 
 
                 </div>
 
             </div>
-
-            <div class="columm">
+            <div class="test-content">
                 <div class="slider">
                     <div class="slides">
                         <img src="images/Mask group (1).png" alt="Image 1">
@@ -1942,89 +2001,98 @@
                     <button class="prev"><img src="images/Icon.png" alt=""></button>
                     <button class="next"><img src="images/arrow-sm-right.png" alt=""></button>
                 </div>
-
             </div>
-        </div>
+
+
+        </main>
     </section>
-    <section class="faq-section">
-        <div class="services-content">
 
 
-            <h2 class="" style="padding-top: 50px;">FAQ
+    <section id="faq-section">
+
+        <div class="faq-content">
+            <h2 class="">FAQ
             </h2>
-            <p class="" style="text-align: center; font-weight: 600; font-size: 16px;">Frequently Asked
-                questions</p>
-            <div class="faq-content">
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <div class="accordion-title active">HOW TO BUY DATA?</div>
-                        <div class="accordion-content">
-                            <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
-                                us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
-                                you want.</p>
-                        </div>
+            <h6 class="">Frequently Asked
+                questions</h6>
+        </div>
+        <div class="accondion-container">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-title active">HOW TO BUY DATA?</div>
+                    <div class="accordion-content">
+                        <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
+                            us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
+                            you want.</p>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">HOW TO BUY DATA?</div>
-                        <div class="accordion-content">
-                            <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
-                                us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
-                                you want.</p>
-                        </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">HOW TO BUY DATA?</div>
+                    <div class="accordion-content">
+                        <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
+                            us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
+                            you want.</p>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">HOW TO BUY DATA?</div>
-                        <div class="accordion-content">
-                            <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
-                                us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
-                                you want.</p>
-                        </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">HOW TO BUY DATA?</div>
+                    <div class="accordion-content">
+                        <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
+                            us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
+                            you want.</p>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">HOW TO BUY DATA?</div>
-                        <div class="accordion-content">
-                            <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
-                                us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
-                                you want.</p>
-                        </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">HOW TO BUY DATA?</div>
+                    <div class="accordion-content">
+                        <p>Your e-wallet is the safest, easiest and fastest means of carrying out transactions with
+                            us. Your funds are secured with your e-wallet PIN and can be kept for you for as long as
+                            you want.</p>
                     </div>
                 </div>
             </div>
-
         </div>
+
+
     </section>
+
 
     <section class="image-section">
+
         <div class="img-content">
-            <div class="" style="position: relative;
-            top: 30px;">
-                <img src="images/Mask group.png" alt="">
-            </div>
-            <div class="img-group">
-                <img src="images/Rectangle 5101.png" alt="" width="71px" height="64px">
-                <img src="images/Rectangle 5101.png" alt="" width="71px" height="64px">
-                <img src="images/Rectangle 5101.png" alt="" width="71px" height="64px">
+
+            <div class="image-grid">
+                <div class="">
+                    <img src="images/Mask group.png" class="bg-image" alt="">
+                </div>
+                <div class="img-group">
+                    <img src="images/Rectangle 5101.png" alt="" width="71px" height="64px">
+                    <img src="images/Rectangle 5101.png" alt="" width="71px" height="64px">
+                    <img src="images/Rectangle 5101.png" alt="" width="71px" height="64px">
+                </div>
             </div>
         </div>
+
     </section>
 
-    <section class="footer">
+    <section id="footer">
 
         <div class="footer-content">
-            <div class="foot-col">
+            <div class="sub-content1">
                 <h2>Ready to launch our Service?</h2>
                 <p>Create Your Free Account In Less Than 2 Mins</p>
             </div>
 
-            <div class="foot-col button">
-                <button class="foot-btn">Register</button>
+            <div class="sub-content2">
+                <button>Register</button>
             </div>
         </div>
 
 
-        <hr class="" style="background-color: #E0F1C5; margin: 20px 70px; height: 1px;">
 
-        <div class="footer-content">
+        <div class="hr"></div>
+
+        <div class="foot-content">
             <div>
                 <p class="para">Your reliable plug for virtual top up, data subscription, online payment and
                     subscription system in
@@ -2043,33 +2111,19 @@
     </section>
 
 
-    <section class="footer-end-section">
-        <p class="">© Netalinks. All right reserved. (By Vaticore Technologies Limited) </p>
-    </section>
+
+
+
+
+
 
     <script>
-        function toggleMenu() {
-            const navbarLinks = document.querySelector('.navbar-links');
-            const authButtons = document.querySelector('.auth-buttons');
-            const menuToggle = document.querySelector('.menu-toggle');
-
-            navbarLinks.classList.toggle('active');
-            authButtons.classList.toggle('mobile');
-            menuToggle.classList.toggle('active');
+        let menu = document.querySelector("#menu-icon");
+        let navbar = document.querySelector(".navbar");
+        menu.onclick = () => {
+            menu.classList.toggle("bx-x")
+            navbar.classList.toggle("open")
         }
-
-        const accordionItems = document.querySelectorAll('.accordion-item');
-
-        // Add click event listener to each item
-        accordionItems.forEach(item => {
-            const title = item.querySelector('.accordion-title');
-
-            // Toggle active class on click
-            title.addEventListener('click', function () {
-                item.classList.toggle('active');
-            });
-        });
-
 
         let slideIndex = 0;
 
@@ -2096,9 +2150,20 @@
 
         showSlides();
 
+
+
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        // Add click event listener to each item
+        accordionItems.forEach(item => {
+            const title = item.querySelector('.accordion-title');
+
+            // Toggle active class on click
+            title.addEventListener('click', function () {
+                item.classList.toggle('active');
+            });
+        });
     </script>
-
-
 
 </body>
 
